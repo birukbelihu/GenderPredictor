@@ -42,7 +42,7 @@ Install Required Dependencies
 pip install -r requirements.txt
 ```
 
-Run Face Mask Detector
+Run Gender Predictor
 ```
 python main.py
 ```
