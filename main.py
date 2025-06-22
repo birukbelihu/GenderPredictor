@@ -12,7 +12,7 @@ previous_frame_time = 0
 fps_history = deque(maxlen=10)
 
 face_net = cv2.dnn.readNetFromCaffe(get_face_detector_prototext_file(), get_face_detector_caffe_model())
-face_mask_model = load_model(get_gender_predictor_model())
+gender_predictor_model = load_model(get_gender_predictor_model())
 
 video_capture = cv2.VideoCapture(1)
 
@@ -52,7 +52,7 @@ while video_capture.isOpened():
                 face_array = resized_face / 255.0
                 face_array = np.expand_dims(face_array, axis=0)
 
-                prediction = face_mask_model.predict(face_array, verbose=0)
+                prediction = gender_predictor_model.predict(face_array, verbose=0)
                 prediction_index = numpy.argmax(prediction[0])
                 confidence = prediction[0][prediction_index]
                 label = get_gender_predictor_model_classes()[numpy.argmax(prediction[0])]
